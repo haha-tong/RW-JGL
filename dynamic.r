@@ -6,19 +6,7 @@ library(Matrix)
 library(doParallel)
 library(foreach)
 library(doRNG)
-library(R.utils)  # for withTimeout
-#noise 0.08
-#A <- 0.18; B <- 0.05; S <- 0.10
-#mu[1:(p/2)]     <- A * sin(pi*k/10) + B
-#mu[(p/2 + 1):p] <- A * cos(pi*k/8)
-#if (k > K/2) mu <- mu + S
-#scenarios <- list(
-#  Stable    = list(A = 0.06, B = 0.02, S = 0.02, noise = 0.02),
-#  Dynamic   = list(A = 0.35, B = 0.08, S = 0.20, noise = 0.24),
-#  Moderate  = list(A = 0.20, B = 0.05, S = 0.10, noise = 0.12),
-#  Realistic = list(A = 0.12, B = 0.03, S = 0.05, noise = 0.08)
-#)
-
+library(R.utils) 
 # --- 1. Generate Sparse Precision Matrix with Drift ---
 generate_sparse_precision <- function(p, sparsity = 0.2, min_eig = 0.1, noise = 0.24, prev = NULL) {
   if (is.null(prev)) {
